@@ -26,22 +26,22 @@ namespace IdentityServer.API.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] string firstName, [FromBody] string lastName)
+        public void Post([FromBody] UpdateModel model)
         {
             context.Users.Add(new AppUser
             {
-                FirstName = firstName,
-                LastName = lastName,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
             });
             context.SaveChanges();
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string firstName, [FromBody] string lastName)
+        public void Put(int id, [FromBody] UpdateModel model)
         {
             var user = context.Users.FirstOrDefault(x => x.Id == id);
-            user.FirstName = firstName;
-            user.LastName = lastName;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
             context.SaveChanges();
         }
 
