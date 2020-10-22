@@ -23,6 +23,8 @@ namespace IdentityServer.API
         {
             services.AddDbContext<AppDbContext>(opts => opts.UseInMemoryDatabase("devDb"));
             services.AddControllers();
+
+            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,6 +34,10 @@ namespace IdentityServer.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            //SWAGGER UI
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseRouting();
 
