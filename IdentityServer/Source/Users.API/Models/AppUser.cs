@@ -1,4 +1,4 @@
-﻿namespace IdentityServer.API.Models
+﻿namespace User.API.Models
 {
     public class AppUser
     {

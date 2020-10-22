@@ -1,12 +1,12 @@
-using IdentityServer.API.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using User.API.Models;
 
-namespace IdentityServer.API
+namespace User.API
 {
     public class Startup
     {

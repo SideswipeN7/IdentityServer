@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using IdentityServer.API.Models;
 using Microsoft.AspNetCore.Mvc;
+using User.API.Models;
 
-namespace IdentityServer.API.Controllers
+namespace User.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
