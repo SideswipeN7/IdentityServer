@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using IdentityServer4.Models;
+using IdentityServer4.Test;
 
 namespace AuthenticationService
 {
@@ -15,6 +16,7 @@ namespace AuthenticationService
 
         internal static IEnumerable<Client> GetClients()
         {
+            // Client Credential
             yield return new Client
             {
                 ClientId = "TestClient",
@@ -22,6 +24,18 @@ namespace AuthenticationService
                 ClientSecrets =
                 {
                     new Secret("qwerty".Sha256()),
+                },
+                AllowedScopes = { "UserAPI_SCOPE" },
+            };
+
+            // User Password based
+            yield return new Client
+            {
+                ClientId = "ResourceOwnerClient",
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                ClientSecrets =
+                {
+                    new Secret("qwerty_zxc".Sha256()),
                 },
                 AllowedScopes = { "UserAPI_SCOPE" },
             };
@@ -36,6 +50,15 @@ namespace AuthenticationService
         internal static IEnumerable<ApiScope> GetApiScopes()
         {
             yield return new ApiScope("UserAPI_SCOPE", "User API scope");
+        }
+
+        internal static List<TestUser> GetTestUsers()
+        {
+            return new List<TestUser>
+            {
+                new TestUser { SubjectId = "1", Username = "Test", Password = "test123!" },
+                new TestUser { SubjectId = "2", Username = "Test1", Password = "test123!" },
+            };
         }
     }
 }
