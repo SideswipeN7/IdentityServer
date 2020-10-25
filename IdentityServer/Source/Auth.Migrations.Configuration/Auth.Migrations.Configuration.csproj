@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="IdentityExpress.Identity" Version="3.1.1" />
     <PackageReference Include="IdentityServer4" Version="4.1.1" />
   </ItemGroup>
 
