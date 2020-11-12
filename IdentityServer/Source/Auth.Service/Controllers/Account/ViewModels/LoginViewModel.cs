@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Auth.Service.Controllers.Account.Models;
 
 namespace Auth.Service.Controllers.Account.ViewModels
 {

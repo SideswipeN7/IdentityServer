@@ -1,7 +1,14 @@
 // Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Auth.Data.Models;
+using Auth.Service.Controllers.Account.ViewModels;
 using IdentityModel;
+using IdentityServer4;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
@@ -11,14 +18,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Auth.Data.Models;
-using IdentityServer4;
-using IdentityServer4.Quickstart.UI;
-using System.Collections.Generic;
-using Auth.Service.Controllers.Account.ViewModels;
 
 namespace Auth.Service.Controllers.Account
 {
@@ -151,7 +150,6 @@ namespace Auth.Service.Controllers.Account
             return View(vm);
         }
 
-
         /// <summary>
         /// Show logout page
         /// </summary>
@@ -208,10 +206,10 @@ namespace Auth.Service.Controllers.Account
         [HttpGet]
         public IActionResult AccessDenied() => View();
 
-
         /*****************************************/
         /* helper APIs for the AccountController */
         /*****************************************/
+
         private async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl)
         {
             AuthorizationRequest context = await _interaction.GetAuthorizationContextAsync(returnUrl);

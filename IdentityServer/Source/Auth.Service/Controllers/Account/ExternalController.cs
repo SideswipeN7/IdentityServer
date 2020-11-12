@@ -9,7 +9,6 @@ using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Events;
 using IdentityServer4.Models;
-using IdentityServer4.Quickstart.UI;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using Microsoft.AspNetCore.Authentication;
@@ -283,7 +282,6 @@ namespace Auth.Service.Controllers.Account
 
             return user;
         }
-
 
         private void ProcessLoginCallbackForOidc(AuthenticateResult externalResult, List<Claim> localClaims, AuthenticationProperties localSignInProps)
         {
