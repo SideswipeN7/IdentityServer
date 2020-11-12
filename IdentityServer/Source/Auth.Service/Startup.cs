@@ -6,8 +6,7 @@ using IdentityExpress.Identity;
 using IdentityExpress.Manager.Api;
 using IdentityServer4;
 using IdentityServer4.Configuration;
-using Auth.Service.Data;
-using Auth.Service.Models;
+using Auth.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -15,48 +14,39 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Reflection;
+using Auth.Data.Models;
+using Auth.Migrations.Configuration;
 
 namespace Auth.Service
 {
     public class Startup
     {
         public IWebHostEnvironment Environment { get; }
+
         public IConfiguration Configuration { get; }
 
-        public Startup(IWebHostEnvironment environment, IConfiguration configuration)
-        {
-            Configuration = configuration;
-            Environment = environment;
-        }
+        public Startup(IWebHostEnvironment environment, IConfiguration configuration) =>
+            (Environment, Configuration) = (environment, configuration);
 
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionStringUsersDb = Configuration.GetConnectionString("Users");
+            string connectionStringConfigurationDb = Configuration.GetConnectionString("Configuration");
+            string migrationsAssembly = typeof(Class1).Assembly.FullName;
+
             services.AddControllersWithViews();
 
-            // configures IIS out-of-proc settings (see https://github.com/aspnet/AspNetCore/issues/14882)
-            services.Configure<IISOptions>(iis =>
-            {
-                iis.AuthenticationDisplayName = "Windows";
-                iis.AutomaticAuthentication = false;
-            });
+            // configures IIS settings
+            IISConfiguration.Register(services);
 
-            // configures IIS in-proc settings
-            services.Configure<IISServerOptions>(iis =>
-            {
-                iis.AuthenticationDisplayName = "Windows";
-                iis.AutomaticAuthentication = false;
-            });
-
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("Users")));
+            services.AddDbContext<IdentityContext>(options =>
+                options.UseSqlServer(connectionStringUsersDb));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<PersistedGrantContext>()
                 .AddDefaultTokenProviders();
 
-            var connectionString = Configuration.GetConnectionString("Configuration");
-            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
 
             var builder = services.AddIdentityServer(options =>
                 {
@@ -77,14 +67,14 @@ namespace Auth.Service
                 .AddConfigurationStore(options =>
                 {
                     options.ConfigureDbContext = db =>
-                        db.UseSqlite(connectionString,
+                        db.UseSqlServer(connectionStringConfigurationDb,
                             sql => sql.MigrationsAssembly(migrationsAssembly));
                 })
                 // this adds the operational data from DB (codes, tokens, consents)
                 .AddOperationalStore(options =>
                 {
                     options.ConfigureDbContext = db =>
-                        db.UseSqlite(connectionString,
+                        db.UseSqlServer(connectionStringConfigurationDb,
                             sql => sql.MigrationsAssembly(migrationsAssembly));
 
                     // this enables automatic token cleanup. this is optional.
@@ -106,11 +96,15 @@ namespace Auth.Service
                 });
 
             services.UseAdminUI();
-            services.AddScoped<IdentityExpressDbContext, SqliteIdentityDbContext>();
+            services.AddScoped<IdentityExpressDbContext, SqlServerIdentityDbContext>();
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IdentityContext identityContext, PersistedGrantContext persistedGrantContext)
         {
+            //Migrations
+            identityContext.Database.Migrate();
+            persistedGrantContext.Database.Migrate();
+
             if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

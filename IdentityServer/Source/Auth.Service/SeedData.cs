@@ -16,7 +16,7 @@ namespace Auth.Service
     {
         public static void EnsureSeedData(string connectionString)
         {
-            var services = new ServiceCollection();
+            ServiceCollection services = new();
             services.AddOperationalDbContext(options =>
             {
                 options.ConfigureDbContext = db => db.UseSqlite(connectionString, sql => sql.MigrationsAssembly(typeof(SeedData).Assembly.FullName));
@@ -26,7 +26,7 @@ namespace Auth.Service
                 options.ConfigureDbContext = db => db.UseSqlite(connectionString, sql => sql.MigrationsAssembly(typeof(SeedData).Assembly.FullName));
             });
 
-            var serviceProvider = services.BuildServiceProvider();
+            ServiceProvider serviceProvider = services.BuildServiceProvider();
 
             using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {

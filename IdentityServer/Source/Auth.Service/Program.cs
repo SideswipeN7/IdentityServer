@@ -11,7 +11,7 @@ using System;
 
 namespace Auth.Service
 {
-    public class Program
+    public static class Program
     {
         public static int Main(string[] args)
         {
@@ -34,7 +34,7 @@ namespace Auth.Service
             try
             {
                 var host = CreateHostBuilder(args).Build();
-                
+
                 Log.Information("Starting host...");
                 host.Run();
                 return 0;
