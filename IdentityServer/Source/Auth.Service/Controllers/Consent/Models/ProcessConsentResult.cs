@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 using Auth.Service.Controllers.Consent.ViewModels;
+using IdentityServer4.Models;
 
 namespace Auth.Service.Controllers.Consent.Models
 {
@@ -11,7 +12,7 @@ namespace Auth.Service.Controllers.Consent.Models
 
         public string RedirectUri { get; set; }
 
-        public string ClientId { get; set; }
+        public Client Client { get; set; }
 
         public bool ShowView => ViewModel is not null;
 

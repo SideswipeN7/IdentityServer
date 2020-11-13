@@ -14,5 +14,7 @@ namespace Auth.Service.Controllers.Consent.Models
         public bool RememberConsent { get; set; }
 
         public string ReturnUrl { get; set; }
+
+        public string Description { get; set; }
     }
 }

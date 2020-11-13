@@ -15,7 +15,7 @@ namespace Auth.Service.Controllers.Account.ViewModels
 
         public string LogoutId { get; set; }
 
-        public bool TriggerExternalSignout => ExternalAuthenticationScheme != null;
+        public bool TriggerExternalSignout => ExternalAuthenticationScheme is not null;
 
         public string ExternalAuthenticationScheme { get; set; }
     }

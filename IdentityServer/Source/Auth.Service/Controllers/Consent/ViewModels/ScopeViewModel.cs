@@ -5,7 +5,7 @@ namespace Auth.Service.Controllers.Consent.ViewModels
 {
     public class ScopeViewModel
     {
-        public string Name { get; set; }
+        public string Value { get; set; }
 
         public string DisplayName { get; set; }
 

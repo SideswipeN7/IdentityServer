@@ -3,7 +3,7 @@
 
 using Auth.Service.Controllers.Account.Models;
 
-namespace Auth.Service.Controllers.Account
+namespace Auth.Service.Controllers.Account.ViewModels
 {
     public class LogoutViewModel : LogoutInputModel
     {

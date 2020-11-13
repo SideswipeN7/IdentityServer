@@ -16,6 +16,8 @@ namespace Auth.Service.Controllers.Grants.ViewModels
 
         public string ClientLogoUrl { get; set; }
 
+        public string Description { get; set; }
+
         public DateTime Created { get; set; }
 
         public DateTime? Expires { get; set; }

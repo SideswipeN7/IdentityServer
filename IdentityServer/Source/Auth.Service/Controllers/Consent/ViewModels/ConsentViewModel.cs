@@ -18,6 +18,6 @@ namespace Auth.Service.Controllers.Consent.ViewModels
 
         public IEnumerable<ScopeViewModel> IdentityScopes { get; set; }
 
-        public IEnumerable<ScopeViewModel> ResourceScopes { get; set; }
+        public IEnumerable<ScopeViewModel> ApiScopes { get; set; }
     }
 }
