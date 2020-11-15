@@ -1,9 +1,10 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
+using Auth.Configuration.Database;
+using Auth.Configuration.Migrations;
 using Auth.Data;
 using Auth.Data.Models;
-using Auth.Migrations.Configuration;
 using IdentityExpress.Identity;
 using IdentityExpress.Manager.Api;
 using IdentityServer4;
@@ -31,7 +32,7 @@ namespace Auth.Service
         {
             string connectionStringUsersDb = Configuration.GetConnectionString("Users");
             string connectionStringConfigurationDb = Configuration.GetConnectionString("Configuration");
-            string migrationsAssembly = typeof(Class1).Assembly.FullName;
+            string migrationsAssembly = typeof(ConfigurationContextModelSnapshot).Assembly.FullName;
 
             services.AddControllersWithViews();
 
