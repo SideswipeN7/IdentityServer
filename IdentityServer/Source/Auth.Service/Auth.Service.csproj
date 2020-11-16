@@ -5,14 +5,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\**" />
     <Compile Remove="Data\**" />
     <Compile Remove="Migrations\**" />
+    <Compile Remove="Views\**" />
+    <Content Remove="Controllers\**" />
     <Content Remove="Data\**" />
     <Content Remove="Migrations\**" />
+    <Content Remove="Views\**" />
+    <EmbeddedResource Remove="Controllers\**" />
     <EmbeddedResource Remove="Data\**" />
     <EmbeddedResource Remove="Migrations\**" />
+    <EmbeddedResource Remove="Views\**" />
+    <None Remove="Controllers\**" />
     <None Remove="Data\**" />
     <None Remove="Migrations\**" />
+    <None Remove="Views\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,5 +51,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Auth.Configuration.Database\Auth.Configuration.Database.csproj" />
     <ProjectReference Include="..\Auth.Configuration.Migrations\Auth.Configuration.Migrations.csproj" />
+    <ProjectReference Include="..\Auth.Grant.Database\Auth.Grant.Database.csproj" />
+    <ProjectReference Include="..\Auth.Grant.Migrations\Auth.Grant.Migrations.csproj" />
   </ItemGroup>
 </Project>
