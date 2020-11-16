@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using IdentityServer4.EntityFramework.DbContexts;
+using IdentityServer4.EntityFramework.Options;
+using Microsoft.EntityFrameworkCore;
 
 namespace Auth.Grant.Database
 {
-    public class PersistedGrantContext: DbContext
+    public class PersistedGrantContext: PersistedGrantDbContext
     {
-        public PersistedGrantContext(DbContextOptions<PersistedGrantContext> options): base(options)
+        public PersistedGrantContext(DbContextOptions<PersistedGrantDbContext> options, OperationalStoreOptions storeOptions) : base(options, storeOptions)
         {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -53,5 +53,7 @@
     <ProjectReference Include="..\Auth.Configuration.Migrations\Auth.Configuration.Migrations.csproj" />
     <ProjectReference Include="..\Auth.Grant.Database\Auth.Grant.Database.csproj" />
     <ProjectReference Include="..\Auth.Grant.Migrations\Auth.Grant.Migrations.csproj" />
+    <ProjectReference Include="..\Auth.Identity.Database\Auth.Identity.Database.csproj" />
+    <ProjectReference Include="..\Auth.Identity.Migrations\Auth.Identity.Migrations.csproj" />
   </ItemGroup>
 </Project>

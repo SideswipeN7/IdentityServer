@@ -1,7 +1,10 @@
-﻿using Auth.Configuration.Migrations;
+﻿using Auth.Configuration.Database;
+using Auth.Configuration.Migrations;
 using Auth.Grant.Database;
+using Auth.Grant.Migrations;
 using Auth.Identity.Database.Models;
 using IdentityServer4.Configuration;
+using IdentityServer4.EntityFramework.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +19,7 @@ namespace Auth.Service.DI
             string configurationMigrationsAssembly = typeof(ConfigurationContextModelSnapshot).Assembly.FullName;
 
             string connectionStringGrantDb = configuration.GetConnectionString("PersistedGrant");
-            string grantMigrationsAssembly = typeof(PersistedGrantContext).Assembly.FullName;
+            string grantMigrationsAssembly = typeof(PersistedGrantContextModelSnapshot).Assembly.FullName;
 
             IIdentityServerBuilder builder = services.AddIdentityServer(options =>
                 {
@@ -54,6 +57,9 @@ namespace Auth.Service.DI
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+
+            services.AddDbContext<ConfigurationContext>();
+            services.AddDbContext<PersistedGrantContext>();
         }
     }
 }
