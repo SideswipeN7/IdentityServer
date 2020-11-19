@@ -38,61 +38,6 @@ namespace Auth.Service
             // Configure External Authentication Providers
             ExternalProvidersConfiguration.Register(Configuration, services);
 
-            #region toDelete
-            //services.AddDbContext<IdentityContext>(options =>
-            //    options.UseSqlServer(connectionStringUsersDb));
-
-            //services.AddIdentity<ApplicationUser, IdentityRole>()
-            //    .AddEntityFrameworkStores<PersistedGrantContext>()
-            //    .AddDefaultTokenProviders();
-
-            //var builder = services.AddIdentityServer(options =>
-            //    {
-            //        options.Events.RaiseErrorEvents = true;
-            //        options.Events.RaiseInformationEvents = true;
-            //        options.Events.RaiseFailureEvents = true;
-            //        options.Events.RaiseSuccessEvents = true;
-
-            //        options.UserInteraction = new UserInteractionOptions
-            //        {
-            //            LogoutUrl = "/Account/Logout",
-            //            LoginUrl = "/Account/Login",
-            //            LoginReturnUrlParameter = "returnUrl"
-            //        };
-            //    })
-            //    .AddAspNetIdentity<ApplicationUser>()
-            //    // this adds the config data from DB (clients, resources, CORS)
-            //    .AddConfigurationStore(options =>
-            //    {
-            //        options.ConfigureDbContext = db =>
-            //            db.UseSqlServer(connectionStringConfigurationDb,
-            //                sql => sql.MigrationsAssembly(migrationsAssembly));
-            //    })
-            //    // this adds the operational data from DB (codes, tokens, consents)
-            //    .AddOperationalStore(options =>
-            //    {
-            //        options.ConfigureDbContext = db =>
-            //            db.UseSqlServer(connectionStringConfigurationDb,
-            //                sql => sql.MigrationsAssembly(migrationsAssembly));
-
-            //        // this enables automatic token cleanup. this is optional.
-            //        options.EnableTokenCleanup = true;
-            //        // options.TokenCleanupInterval = 15; // interval in seconds. 15 seconds useful for debugging
-            //    });
-
-            //// not recommended for production - you need to store your key material somewhere secure
-            //builder.AddDeveloperSigningCredential();
-
-            //services.AddAuthentication()
-            //    .AddGoogle(options =>
-            //    {
-            //        options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-
-            //        options.ClientId = Configuration["Secret:GoogleClientId"];
-            //        options.ClientSecret = Configuration["Secret:GoogleClientSecret"];
-            //    });
-            #endregion
-
             //services.UseAdminUI();
             //services.AddScoped<IdentityExpressDbContext, SqlServerIdentityDbContext>();
         }
@@ -102,7 +47,6 @@ namespace Auth.Service
             MigrateDatabase<IdentityContext>(app);
             MigrateDatabase<ConfigurationContext>(app);
             MigrateDatabase<PersistedGrantContext>(app);
-
 
             if (Environment.IsDevelopment())
             {
@@ -122,7 +66,7 @@ namespace Auth.Service
 
             // app.UseAdminUI();
 
-            //app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
+            app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
         }
 
         private static void MigrateDatabase<T>(IApplicationBuilder app) where T: DbContext
