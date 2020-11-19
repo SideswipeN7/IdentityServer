@@ -1,10 +1,9 @@
-﻿using Auth.Configuration.Database;
-using Auth.Configuration.Migrations;
-using Auth.Grant.Database;
-using Auth.Grant.Migrations;
+﻿using Auth.Configurations.Database;
+using Auth.Configurations.Migrations;
+using Auth.Grants.Database;
+using Auth.Grants.Migrations;
 using Auth.Identity.Database.Models;
 using IdentityServer4.Configuration;
-using IdentityServer4.EntityFramework.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

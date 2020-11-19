@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Auth.Configuration.Database\Auth.Configurations.Database.csproj" />
+    <ProjectReference Include="..\Auth.Configurations.Database\Auth.Configurations.Database.csproj" />
+  </ItemGroup>
+
+</Project>

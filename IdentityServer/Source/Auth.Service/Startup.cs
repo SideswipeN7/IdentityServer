@@ -2,8 +2,8 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 using System;
-using Auth.Configuration.Database;
-using Auth.Grant.Database;
+using Auth.Configurations.Database;
+using Auth.Grants.Database;
 using Auth.Identity.Database;
 using Auth.Service.DI;
 using Microsoft.AspNetCore.Builder;

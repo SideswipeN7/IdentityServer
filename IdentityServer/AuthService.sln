@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30524.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Configuration.Migrations", "Source\Auth.Configuration.Migrations\Auth.Configuration.Migrations.csproj", "{5A486E9B-A6B7-47D5-9E89-01B8B5738D36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Configurations.Migrations", "Source\Auth.Configurations.Migrations\Auth.Configurations.Migrations.csproj", "{5A486E9B-A6B7-47D5-9E89-01B8B5738D36}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Service", "Source\Auth.Service\Auth.Service.csproj", "{CE159C98-9617-4B0D-AD18-EB4F9E966577}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Shared.Data", "Source\Auth.Shared.Data\Auth.Shared.Data.csproj", "{D6B590D8-0CB7-4B9B-B408-69781F1539F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Configuration.Database", "Source\Auth.Configuration.Database\Auth.Configuration.Database.csproj", "{8D836ED5-0EBF-4FC0-9B33-C1B0D36144D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Configurations.Database", "Source\Auth.Configurations.Database\Auth.Configurations.Database.csproj", "{8D836ED5-0EBF-4FC0-9B33-C1B0D36144D6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Grant.Database", "Source\Auth.Grant.Database\Auth.Grant.Database.csproj", "{AFCBB246-A1AC-4055-93DF-2DA2AE9C23E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Grants.Database", "Source\Auth.Grants.Database\Auth.Grants.Database.csproj", "{AFCBB246-A1AC-4055-93DF-2DA2AE9C23E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Grant.Migrations", "Source\Auth.Grant.Migrations\Auth.Grant.Migrations.csproj", "{DC7E91A0-CFFB-40B0-B42B-B59F84701A8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Grants.Migrations", "Source\Auth.Grants.Migrations\Auth.Grants.Migrations.csproj", "{DC7E91A0-CFFB-40B0-B42B-B59F84701A8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Identity.Database", "Source\Auth.Identity.Database\Auth.Identity.Database.csproj", "{6530F0A7-38D5-4528-8347-0025EAADAABD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Identity.Database", "Source\Auth.Identity.Database\Auth.Identity.Database.csproj", "{6530F0A7-38D5-4528-8347-0025EAADAABD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Identity.Migrations", "Source\Auth.Identity.Migrations\Auth.Identity.Migrations.csproj", "{C1CA18E1-2AEF-478C-BB93-43E1C1A5B109}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Identity.Migrations", "Source\Auth.Identity.Migrations\Auth.Identity.Migrations.csproj", "{C1CA18E1-2AEF-478C-BB93-43E1C1A5B109}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

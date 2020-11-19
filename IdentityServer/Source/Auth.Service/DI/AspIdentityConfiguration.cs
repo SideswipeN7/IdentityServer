@@ -19,7 +19,6 @@ namespace Auth.Service.DI
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityContext>()
-                //.AddEntityFrameworkStores<IdentityContext>() // OR USE PersistedGrantContext
                 .AddDefaultTokenProviders();
         }
     }
