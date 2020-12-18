@@ -18,9 +18,9 @@ namespace Auth.Service
 {
     public class Startup
     {
-        public IWebHostEnvironment Environment { get; init; }
+        private IWebHostEnvironment Environment { get; init; }
 
-        public IConfiguration Configuration { get; init; }
+        private IConfiguration Configuration { get; init; }
 
         public Startup(IWebHostEnvironment environment, IConfiguration configuration) =>
             (Environment, Configuration) = (environment, configuration);
@@ -37,9 +37,6 @@ namespace Auth.Service
             IS4Configuration.Register(Configuration, services);
             // Configure External Authentication Providers
             ExternalProvidersConfiguration.Register(Configuration, services);
-
-            //services.UseAdminUI();
-            //services.AddScoped<IdentityExpressDbContext, SqlServerIdentityDbContext>();
         }
 
         public void Configure(IApplicationBuilder app)
@@ -63,8 +60,6 @@ namespace Auth.Service
             app.UseRouting();
             app.UseIdentityServer();
             app.UseAuthorization();
-
-            // app.UseAdminUI();
 
             app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
         }

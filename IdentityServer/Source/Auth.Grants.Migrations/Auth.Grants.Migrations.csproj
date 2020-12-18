@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Auth.Grant.Database\Auth.Grants.Database.csproj" />
     <ProjectReference Include="..\Auth.Grants.Database\Auth.Grants.Database.csproj" />
   </ItemGroup>
 

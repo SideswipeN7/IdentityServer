@@ -1,4 +1,9 @@
 ﻿namespace Auth.Service.Configurations
 {
-    public record ExternalProviderConfiguration(string Name, bool IsActive, string ClientId, string ClientSecret);
+    public class ExternalProviderConfiguration {
+        public string Name { get; init; }
+        public bool IsActive { get; init; }
+        public string ClientId { get; init; }
+        public string ClientSecret { get; init; }
+    }
 }

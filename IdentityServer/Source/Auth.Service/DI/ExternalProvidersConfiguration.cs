@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using Auth.Service.Configurations;
 using IdentityServer4;
 using Microsoft.Extensions.Configuration;
@@ -11,14 +11,16 @@ namespace Auth.Service.DI
         private const string ExternalProviderGoogle = "Google";
         public static void Register(IConfiguration configuration, IServiceCollection services)
         {
-            foreach (ExternalProviderConfiguration config in configuration.GetValue<ExternalProviderConfiguration[]>("ExternalProviders"))
+            List<ExternalProviderConfiguration> providerConfigurations = new();
+            configuration.GetSection("ExternalProviders").Bind(providerConfigurations);
+
+            foreach (ExternalProviderConfiguration config in providerConfigurations)
             {
                 switch (config)
                 {
                     case { Name: ExternalProviderGoogle, IsActive: true }:
                         RegisterGoogle(config, services);
                         break;
-                    default: throw new ArgumentException($"Unknown external provider name: '{config.Name}'");
                 }
             }
         }
