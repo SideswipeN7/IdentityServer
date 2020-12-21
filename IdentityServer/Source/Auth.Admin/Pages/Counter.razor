@@ -1,0 +1,16 @@
+﻿@page "/counter"
+
+<MatH1>Counter</MatH1>
+
+<p>Current count: @currentCount</p>
+
+<MatButton OnClick="IncrementCount" Raised="true">Add</MatButton>
+<MatButton OnClick="DecrementCount" Class="@Constants.SecondaryClass" Raised="true">Remove</MatButton>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount() => currentCount++;
+
+    private void DecrementCount() => currentCount--;
+}

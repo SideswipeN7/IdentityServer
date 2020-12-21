@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+
+<MatAppBarContainer>
+    <MatAppBar Fixed="true">
+        <MatAppBarRow>
+            <MatAppBarSection Align="@MatAppBarSectionAlign.Start">
+                <MatIconButton Icon="menu" OnClick="ToggleDrawer"></MatIconButton>
+                <MatAppBarTitle @onclick="NavigateHome">
+                    <span class="app-title">@AppName</span>
+                </MatAppBarTitle>
+            </MatAppBarSection>
+        </MatAppBarRow>
+    </MatAppBar>
+    <MatAppBarContent>
+        @*Navigation Drawer*@
+        <MatDrawerContainer>
+            <MatDrawer @bind-Opened="@Opened" Mode="@MatDrawerMode.Modal">
+                <NavMenu />
+            </MatDrawer>
+        </MatDrawerContainer>
+        @*Page Body*@
+        <MatDrawerContent>
+            <div class="app-body">
+                <div class="container mt-2 p-1">
+                    @Body
+                </div>
+            </div>
+        </MatDrawerContent>
+    </MatAppBarContent>
+</MatAppBarContainer>
